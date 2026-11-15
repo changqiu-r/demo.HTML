@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科协招新登记平台</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-family: #F5F8FB;
+        }
+        div h2  {
+            color: #475569;
+            text-align: center;
+            margin: 24px;
+            padding: 10px;
+            background-color: #FFFFFF;
+            
+        }
+        .page-section_1 li {
+            margin: 24px auto;
+            padding: 32px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #FFFFFF;
+            color: #475569;
+            display: block;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #F5F8FB;
+            }
+        p a {
+            text-align: center;
+            color: #1F4E79;
+        }
+        .kexie {
+            display: flex ;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+        .kexie a {
+            display: inline-block;
+            padding: 10px 16px;
+            color: #1F4E79;
+            background-color: #FFFFFF;
+            border: 1px solid #1F4E79;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .kexie a:hover{
+            color: red;
+        }
+        .main-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+        }
+        .main-nav a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            color: #1F4E79;
+            font-weight: 600;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .main-nav a:hover{
+            color: #FFFFFF;
+            background-color: #1F4E79;
+        }
+        .main-nav a.active {
+            color: #FFFFFF;
+            background-color: #1F4E79;
+        }
+        .page-section_2 ol {
+            display: flex;
+            justify-content: center;
+            border-radius: 40px;;
+            margin: auto;
+            padding: 10px 100px;
+            gap: 30px;
+            color: #1F4E79;
+            background-color: #E2E8F0;
+            max-width: 500px;
+        }
+        .page-section_2 h3 {
+            display: flex;
+            justify-content: center;
+            color: #334155;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        .page-section_3 h3{
+            display: flex;
+            justify-content: center;
+            color: #334155;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        .notice-list {
+            width: 100%;
+            display: flex;
+            margin: auto;
+            padding: auto;
+            border-radius: 40px;
+            flex-direction: column;
+            align-items: center;
+            max-width: 760px;
+            background-color: #E2E8F0;
+            color: #1F4E79;
+        }
+        .form-row label{
+            align-items: center;
+            width: 10%;
+            display: flex;
+            margin: 10px;
+            padding: auto;
+            border-radius: 40px;
+            flex-direction: column;
+            /* max-width: 760px; */
+            background-color: #E2E8F0;
+            color: #1F4E79;
+        }
+        .choice-group {
+            border: 2px solid #D9E2EC;
+            border-radius: 10px;
+            color: #1F4E79;
+        }
+        .choice-group legend{
+           padding: 10px;
+        }
+        .form-row {
+            display: flex;
+            padding: 20px;
+        }
+        .form-row select {
+            border: 2px solid #D9E2EC;
+            border-radius: 10px;
+            color: #1F4E79;
+        }
+        .form-row-1 {
+            display: flex;
+            padding: 20px;
+        }
+        .form-row-1 label {
+            border: 2px solid #D9E2EC;
+            border-radius: 10px;
+            color: #1F4E79;
+            height: 30px;
+            align-items: center;
+            /* padding: px; */
+        }
+        #selfintroduce {
+            border: 2px solid #D9E2EC;
+            border-radius: 10px;
+            height: 50px;
+        }
+        .form-message {
+            display: none;
+            max-width: 760px;
+            margin: 16px auto;
+            padding: 12px 16px;
+            color: #0F766E;
+            background-color: #E8F5EF;
+            border: 1px solid #B7DDD2;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .form-message.show {
+            display: block;
+        }
+        .back-to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 50%;
+            color: #FFFFFF;
+            background-color: #1F4E79;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <h1>科协招新登记平台</h1>
+
+    <p class="kexie">
+        <a href="http://iesast:30080/" target="_blank" rel="noopener">在新窗口进入科协平台</a>
+        <a href="http://iesast:30080/" target="_self">在本窗口进入科协平台</a>
+    </p>
+
+    <nav class="main-nav" aria-label="报名导航">
+        <ul>
+            <li><a href="#directions">招新方向</a></li>
+            <li><a href="#process">报名流程</a></li>
+            <li><a href="#signup">填写报名表</a></li>
+        </ul>
+    </nav>
+
+    <img src="kexie.jpg" alt="科协招新宣传图"> 
+
+    <div class="page-section_1">
+        <h2 id="directions">招新方向</h2>
+        <ul>
+            <li>前端开发</li>
+            <li>后端开发</li>
+            <li>人工智能</li>
+            <li>视觉设计</li>
+            <li>活动运营</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="page-section_2">
+        <h2 id="process">报名流程</h2>
+        <ol type="A"> <!--把这些有序列表项用大写英文字母编号。-->
+            <li>填写并提交报名表</li>
+            <li>查询初审结果</li>
+        </ol>
+
+        <h3>通过初审后的安排</h3>
+        <ol start="1">
+            <li>参加面试</li>
+            <li>等待录取通知</li>
+        </ol>
+    </div>
+    
+    <div class="page-section_3">
+        <h3>报名须知</h3>
+    
+        <table class="notice-list">
+            <tbody>
+                <tr>
+                    <th scope="row">报名对象</th>
+                    <td>面向全校对科技活动感兴趣的同学</td>
+                </tr>
+                <tr>
+                    <th scope="row">报名截止时间</th>
+                    <td>2026年10月31日</td>
+                </tr>
+                <tr>
+                    <th scope="row">面试形式</th>
+                    <td>线下面试，具体时间以通知为准</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div><h2 id="signup">填写报名表</h2></div>
+
+    <form action="#" method="post" class="signup-form">
+        <div class="form-row">
+            <label for="username">用户名：</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="form-row">
+            <label for="password">密码：</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <fieldset class="choice-group">
+            <legend>报名方向 <span class="hint">（可多选）</span></legend>
+
+            <label>
+                <input type="checkbox" name="department" value="frontend">
+                前端开发部
+            </label>
+
+            <label>
+                <input type="checkbox" name="department" value="backend">
+                后端开发部
+            </label>
+
+            <label>
+                <input type="checkbox" name="department" value="ai">
+                人工智能部
+            </label>
+        </fieldset>
+
+        <fieldset class="choice-group">
+            <legend class="hint">报名身份 </legend>
+
+            <label>
+                <input type="radio" name="identity" value="本科生">
+                本科生
+            </label>
+
+            <label>
+                <input type="radio" name="identity" value="研究生">
+                研究生
+            </label>
+        </fieldset>
+
+        <div class="form-row">
+            <label for="college">所在学院：</label>
+            <select id="college" name="college" required>
+                <option value="" disabled selected>请选择学院</option>
+                <option value="信息工程学院">信息工程学院</option>
+                <option value="地球科学学院">地球科学学院</option>
+                <option value="水资源与环境学院">水资源与环境学院</option>
+                <option value="城市地质和工程学院">城市地质和工程学院</option>
+                <option value="宝石与材料学院">宝石与材料学院</option>
+                <option value="土地科学与空间规划学院">土地科学与空间规划学院</option>
+                <option value="经济学院">经济学院</option>
+                <option value="管理学院">管理学院</option>
+                <option value="法政学院">法政学院</option>
+                <option value="艺术学院">艺术学院</option>
+                <option value="语言文化学院">语言文化学院</option>
+                <option value="马克思主义学院">马克思主义学院</option>
+                <option value="体育部">体育部</option>
+                <option value="研究生学院">研究生学院</option>
+                <option value="数理教育部">数理教育部</option>
+            </select>
+        </div>
+
+        <div class="form-row-1">
+            <label for="selfintroduce">自我介绍：</label>
+            <textarea id="selfintroduce" name="selfintroduce" rows="10"
+                      placeholder="请简要介绍你的兴趣和相关经历"></textarea>
+        </div>
+
+        <div class="actions">
+            <button type="submit">提交报名</button>
+            <button type="reset">重置数据</button>
+        </div>
+    </form>
+    <p class="form-message" role="status" aria-live="polite"></p>
+    <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
+
+    <script>
+        const navLinks = document.querySelectorAll(".main-nav a");
+
+        navLinks.forEach((link) => {
+            link.addEventListener("click", (event) => {
+                const targetId = link.getAttribute("href");
+                const target = document.querySelector(targetId);
+
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+                navLinks.forEach((item) => item.classList.remove("active"));
+                link.classList.add("active");
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        });
+
+        const signupForm = document.querySelector(".signup-form");
+        const formMessage = document.querySelector(".form-message");
+
+        signupForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (!signupForm.reportValidity()) {
+                return;
+            }
+
+            const username = document.querySelector("#username").value.trim();
+            formMessage.textContent = `${username}，报名信息已经填写完成。该页面为课堂演示，不会真正提交数据。`;
+            formMessage.classList.add("show");
+        });
+
+        signupForm.addEventListener("reset", () => {
+            formMessage.classList.remove("show");
+            formMessage.textContent = "";
+        });
+
+        const backToTop = document.querySelector(".back-to-top");
+        window.addEventListener("scroll", () => {
+            backToTop.classList.toggle("show", window.scrollY > 300);
+        });
+
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+</html>
